@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WinWin.travel Automation QA Report</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #647084;
+      --line: #d9dee8;
+      --soft: #f5f7fb;
+      --accent: #e85d24;
+      --pass: #1f7a4d;
+      --fail: #b42318;
+      --warn: #a15c00;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+      background: #fff;
+    }
+    header {
+      padding: 40px 56px 26px;
+      border-bottom: 1px solid var(--line);
+      background: #fff7f2;
+    }
+    main { max-width: 1160px; padding: 28px 56px 56px; }
+    h1 { margin: 0 0 8px; font-size: 34px; line-height: 1.15; }
+    h2 { margin: 34px 0 14px; font-size: 24px; }
+    h3 { margin: 0 0 8px; font-size: 18px; }
+    p { margin: 8px 0; }
+    code, pre {
+      font-family: Consolas, Monaco, "Courier New", monospace;
+      font-size: 13px;
+    }
+    pre {
+      overflow: auto;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #0f172a;
+      color: #f8fafc;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 22px;
+      font-size: 14px;
+    }
+    th, td {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: var(--soft); }
+    a { color: var(--accent); }
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .meta div, .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .meta div { padding: 12px 14px; }
+    .label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: 4px;
+    }
+    .card { padding: 16px 18px; margin: 14px 0; }
+    .summary { background: var(--soft); }
+    .status {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 999px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .pass { background: var(--pass); }
+    .fail { background: var(--fail); }
+    .warn { background: var(--warn); }
+    .muted { color: var(--muted); }
+    @media (max-width: 800px) {
+      header, main { padding-left: 20px; padding-right: 20px; }
+      .meta { grid-template-columns: 1fr; }
+      table { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>WinWin.travel Automation QA Report</h1>
+    <p class="muted">Автоматизированная проверка ключевых сценариев для тестового задания QA Automation Engineer.</p>
+    <div class="meta">
+      <div><span class="label">Project</span>WinWin.travel</div>
+      <div><span class="label">Base URL</span>https://winwin.travel</div>
+      <div><span class="label">Date</span>29.04.2026</div>
+      <div><span class="label">Tester</span>QA Candidate</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="card summary">
+      <h2>Summary</h2>
+      <table>
+        <tr>
+          <th>Total</th>
+          <th>Passed</th>
+          <th>Failed</th>
+          <th>Browser</th>
+          <th>Result</th>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><span class="status pass">2 passed</span></td>
+          <td><span class="status fail">1 failed</span></td>
+          <td>Chromium / Desktop Chrome</td>
+          <td>Regression issue confirmed</td>
+        </tr>
+      </table>
+      <p>Последний запуск: <code>npm test</code>. Общий результат: тестовый набор завершился с ошибкой из-за дефекта синхронизации фильтров с URL/API.</p>
+    </section>
+
+    <h2>Environment</h2>
+    <table>
+      <tr><th>Item</th><th>Value</th></tr>
+      <tr><td>Framework</td><td>Playwright Test</td></tr>
+      <tr><td>Language</td><td>JavaScript</td></tr>
+      <tr><td>Pattern</td><td>Page Object Model</td></tr>
+      <tr><td>Config</td><td><code>playwright.config.js</code></td></tr>
+      <tr><td>Test file</td><td><code>tests/winwin-required-scenarios.spec.js</code></td></tr>
+      <tr><td>Page object</td><td><code>pages/HomePage.js</code></td></tr>
+    </table>
+
+    <h2>Test Cases</h2>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Test case</th>
+        <th>Covered functionality</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>AT-01</td>
+        <td>Max Adults Selection</td>
+        <td>Открытие guest selector, увеличение Adults до лимита, проверка лимита 10 и disabled-state у кнопки plus.</td>
+        <td><span class="status pass">Passed</span></td>
+      </tr>
+      <tr>
+        <td>AT-02</td>
+        <td>Pets Filter Options</td>
+        <td>Добавление pet, проверка типов Dog/Cat/Other, выбор Other, возврат на Dog, проверка весовых опций для Dog.</td>
+        <td><span class="status pass">Passed</span></td>
+      </tr>
+      <tr>
+        <td>AT-03</td>
+        <td>Filters Affect Request</td>
+        <td>Открытие filters dialog, выбор Dogs allowed, применение фильтра, проверка изменения URL и наличия filter/pet/dog параметров в search API request.</td>
+        <td><span class="status fail">Failed</span></td>
+      </tr>
+    </table>
+
+    <h2>Failed Test Details</h2>
+    <div class="card">
+      <h3>AT-03: Filters Affect Request <span class="status fail">Failed</span></h3>
+      <p><strong>Steps:</strong> открыть <code>/app</code>, открыть фильтры, выбрать <code>Dogs allowed</code>, применить поиск.</p>
+      <p><strong>Expected result:</strong> URL должен измениться и отражать применённый фильтр; последний <code>/api/v1/offers/search</code> request должен содержать информацию о pet/dog/filter.</p>
+      <p><strong>Actual result:</strong> URL остался без изменений после применения фильтра.</p>
+      <pre>Expected: not "https://winwin.travel/app/?search.pagination.limit=12&amp;search.pagination.offset=0&amp;search.stay.defaultStayPeriod.checkIn=2026-05-06T10%3A31%3A10.946Z&amp;search.stay.defaultStayPeriod.checkOut=2026-05-09T10%3A31%3A10.947Z&amp;search.geolocation.radius=10&amp;search.geolocation.centerPoint.latitude=52.377956&amp;search.geolocation.centerPoint.longitude=4.89707&amp;search.guestQuantity.adultsQuantity=2&amp;search.flagSearch.isSearchWithDynamicAndStaticData=true"</pre>
+      <p><strong>Impact:</strong> пользователь выбирает фильтр, но результат поиска и shareable URL могут не соответствовать выбранным условиям. Это влияет на корректность поиска и воспроизводимость результата.</p>
+    </div>
+
+    <h2>Artifacts</h2>
+    <table>
+      <tr><th>Artifact</th><th>Path</th><th>Purpose</th></tr>
+      <tr>
+        <td>HTML Playwright report</td>
+        <td><code>playwright-report/index.html</code></td>
+        <td>Полный интерактивный отчёт Playwright.</td>
+      </tr>
+      <tr>
+        <td>Failure screenshot</td>
+        <td><code>test-results/winwin-required-scenarios--1837c-arch-API-request-parameters-chromium/test-failed-1.png</code></td>
+        <td>Скриншот состояния страницы в момент падения.</td>
+      </tr>
+      <tr>
+        <td>Video</td>
+        <td><code>test-results/winwin-required-scenarios--1837c-arch-API-request-parameters-chromium/video.webm</code></td>
+        <td>Видео воспроизведения failing scenario.</td>
+      </tr>
+      <tr>
+        <td>Trace</td>
+        <td><code>test-results/winwin-required-scenarios--1837c-arch-API-request-parameters-chromium/trace.zip</code></td>
+        <td>Trace для анализа действий, DOM, network и console.</td>
+      </tr>
+      <tr>
+        <td>Error context</td>
+        <td><code>test-results/winwin-required-scenarios--1837c-arch-API-request-parameters-chromium/error-context.md</code></td>
+        <td>Playwright context snapshot для ошибки.</td>
+      </tr>
+    </table>
+
+    <h2>How To Run</h2>
+    <pre>npm install
+npx playwright install
+npm test</pre>
+    <p>Для просмотра HTML-отчёта после запуска:</p>
+    <pre>npm run report</pre>
+
+    <h2>Repository Contents</h2>
+    <p>Для GitHub нужно загрузить содержимое папки проекта без <code>node_modules</code>, <code>test-results</code> и <code>playwright-report</code>, если артефакты не требуются в репозитории.</p>
+    <table>
+      <tr><th>File / Folder</th><th>Description</th></tr>
+      <tr><td><code>package.json</code></td><td>Scripts and dependencies.</td></tr>
+      <tr><td><code>package-lock.json</code></td><td>Locked dependency versions.</td></tr>
+      <tr><td><code>playwright.config.js</code></td><td>Playwright config, browser, reporter, base URL, screenshots/video/trace settings.</td></tr>
+      <tr><td><code>tests/</code></td><td>Automated test scenarios.</td></tr>
+      <tr><td><code>pages/</code></td><td>Page Object Model helpers.</td></tr>
+      <tr><td><code>README.md</code></td><td>Setup, run instructions and latest result summary.</td></tr>
+    </table>
+  </main>
+</body>
+</html>
